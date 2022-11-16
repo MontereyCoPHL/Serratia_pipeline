@@ -1,0 +1,17 @@
+version: 1.2
+workflows:
+ - name: Serratia_Preprocess
+   subclass: WDL
+   primaryDescriptorPath: /workflows/serratia_preprocess.wdl
+   testParameterFiles:
+    - empty.json
+ - name: Fastqc_Aggregate
+   subclass: WDL
+   primaryDescriptorPath: /workflows/fastqc_aggregate.wdl
+   testParameterFiles:
+    - empty.json
+ - name: Serratia_Assemble
+   subclass: WDL
+   primaryDescriptorPath: /workflows/serratia_assemble.wdl
+   testParameterFiles:
+    - empty.json
