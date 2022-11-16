@@ -37,7 +37,7 @@ workflow serratia_assemble{
 		String total_length = quast_task.total_length
 		String percent_GC = quast_task.percent_GC
 		File quast_report_pdf = quast_task.quast_report_pdf
-		File misassemblies_report = quast_task.missassemblies_report
+		File misassemblies_report = quast_task.misassemblies_report
 		File unaligned_report = quast_task.unaligned_report
 		#busco output
 		File busco_report = busco_task.busco_report
