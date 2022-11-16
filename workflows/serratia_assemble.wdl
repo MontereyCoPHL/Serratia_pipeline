@@ -27,7 +27,7 @@ workflow serratia_assemble{
 		#unicyler output
 		File unicycler_assembly_gfa = unicycler_task.assembly_gfa
 		File unicycler_assembly_fasta = unicycler_task.assembly_fasta
-		File unicycler_log = unicycler_task.assembly_log
+		File unicycler_log = unicycler_task.unicycler_log
 		#ragtag output
 		File ragtag_assembly = ragtag_task.ragtag_assembly
 		File ragtag_stats = ragtag_task.ragtag_stats
