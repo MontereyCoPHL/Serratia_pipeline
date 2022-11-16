@@ -23,5 +23,26 @@ workflow serratia_assemble{
 	call busco.busco_task{
 		input: query = ragtag_task.ragtag_assembly
 	}
+	output {
+		#unicyler output
+		File unicycler_assembly_gfa = unicycler_task.assembly_gfa
+		File unicycler_assembly_fasta = unicycler_task.assembly_fasta
+		File unicycler_log = unicycler_task.assembly_log
+		#ragtag output
+		File ragtag_assembly = ragtag_task.ragtag_assembly
+		File ragtag_stats = ragtag_task.ragtag_stats
+		#quast output
+		File quast_report = quast_task.quast_report
+		String N50 = quast_task.N50
+		String total_length = quast_task.total_length
+		String percent_GC = quast_task.percent_GC
+		File quast_report_pdf = quast_task.quast_report_pdf
+		File misassemblies_report = quast_task.missassemblies_report
+		File unaligned_report = quast_task.unaligned_report
+		#busco output
+		File busco_report = busco_task.busco_report
+		String one_line_summary = busco_task.one_line_summary
+		File predicted_genes = busco_task.predicted_genes
+	}
 
 }
