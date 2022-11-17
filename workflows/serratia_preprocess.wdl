@@ -23,5 +23,23 @@ workflow serratia_preprocess{
 	call fastqc.fastqc_task as qc4{
 		input: read = trim.read2_trimmed
 	}
+	output{
+		#qc1 output
+		File read1_pretrim_report_zip = qc1.report_zip
+		File read1_pretrim_report_html = qc1.report_html
+		#qc2 output
+		File read2_pretrim_report_zip = qc2.report_zip
+		File read2_pretrim_report_html = qc2.report_html
+		#qc3 output
+		File read1_posttrim_report_zip = qc3.report_zip
+		File read1_posttrim_report_html = qc3.report_html
+		#qc4 output
+		File read2_posttrim_report_zip = qc4.report_zip
+		File read2_posttrim_report_html = qc4.report_html
+		#trimmomatic output
+		File read1_trimmed = trim.read1_trimmed
+		File read2_trimmed = trim.read2_trimmed
+		File trimmomatic_log = trim.log
+	}
 
 }
