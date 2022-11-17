@@ -9,5 +9,8 @@ workflow fastqc_aggregate{
 	call multiqc.multiqc_task{
 		input: reports = reports
 	}
+	output{
+		File multiqc_report = multiqc_task.report
+	}
 
 }
