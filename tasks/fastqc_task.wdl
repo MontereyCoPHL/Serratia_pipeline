@@ -8,8 +8,8 @@ task fastqc_task{
 
 		#fastqc params
 		File read
-		String out_zip = "temp/" + sub(basename(read), "\\.fastq*", "_fastqc.zip")
-		String out_html = "temp/" + sub(basename(read), "\\.fastq*", "_fastqc.html")
+		String out_zip = "temp/" + sub(basename(read, ".gz"), "\\.fastq*", "_fastqc.zip")
+		String out_html = "temp/" + sub(basename(read, ".gz"), "\\.fastq*", "_fastqc.html")
 		Int threads = 4
 	}
 	command <<<
