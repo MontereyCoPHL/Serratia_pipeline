@@ -13,6 +13,8 @@ task ragtag_task{
 	}
 	command <<<
 		ragtag.py scaffold ~{reference} ~{query}
+		mv ragtag_output/ragtag.scaffold.fasta ragtag_output/ragtag_scaffold.fasta
+		mv ragtag_output/ragtag.scaffold.stats ragtag_output/ragtag_scaffold.stats
 
 	>>>
 	runtime{
@@ -24,7 +26,7 @@ task ragtag_task{
 		maxRetries: 3
 	}
 	output{
-		File ragtag_assembly = "ragtag_output/ragtag.scaffold.fasta"
-		File ragtag_stats = "ragtag_output/ragtag.scaffold.stats"
+		File ragtag_assembly = "ragtag_output/ragtag_scaffold.fasta"
+		File ragtag_stats = "ragtag_output/ragtag_scaffold.stats"
 	}
 }
