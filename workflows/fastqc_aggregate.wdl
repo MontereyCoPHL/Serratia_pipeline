@@ -4,13 +4,19 @@ import "../tasks/multiqc_task.wdl" as multiqc
 
 workflow fastqc_aggregate{
 	input{
-		Array[File] reports
+		Array[File] pretrim_reports
+		Array[File] posttrim_reports
 	}
-	call multiqc.multiqc_task{
-		input: reports = reports
+	call multiqc.multiqc_task as task1{
+		input: reports = pretrim_reports
+	}
+	call multiqc.multiqc_task as task2{
+		input: reports = posttrim_reports
 	}
 	output{
-		File multiqc_report = multiqc_task.report
+		File pretrim_multiqc_report = task1.report
+		File posttrim_multiqc_report = task2.report
+
 	}
 
 }
