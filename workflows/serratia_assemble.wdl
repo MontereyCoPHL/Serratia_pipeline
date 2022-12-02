@@ -4,6 +4,7 @@ import "../tasks/unicycler_task.wdl" as unicycler
 import "../tasks/ragtag_task.wdl" as ragtag
 import "../tasks/quast_task.wdl" as quast
 import "../tasks/busco_task.wdl" as busco
+import "../tasks/amrfinderplus_task.wdl" as amrfinder
 
 workflow serratia_assemble{
 	input{
@@ -22,6 +23,9 @@ workflow serratia_assemble{
 	}
 	call busco.busco_task{
 		input: query = ragtag_task.ragtag_assembly
+	}
+	call amrfinder.amrfinderplus_task{
+		input: assembly = ragtag_task.ragtag_assembly
 	}
 	output {
 		#unicyler output
@@ -43,6 +47,8 @@ workflow serratia_assemble{
 		File busco_report = busco_task.busco_report
 		String one_line_summary = busco_task.one_line_summary
 		File predicted_genes = busco_task.predicted_genes
+		#amrfinderplus output
+		File amrfinderplus_report = amrfinderplus_task.amrfinder_report
 	}
 
 }

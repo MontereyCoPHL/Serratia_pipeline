@@ -4,14 +4,14 @@ version 1.0
 task unicycler_task{
 	input{
 		String docker = "staphb/unicycler:latest"
-		Int cpu = 4
+		Int cpu = 8
 		Int memory = 8
 
 		#unicycler params
 		File r1
 		File r2
 		String baseout = sub(basename(r1), "_1P.fq.gz", "")
-		Int threads = 4
+		Int threads = 8
 	}
 	command <<<
 		unicycler -1 ~{r1} -2 ~{r2} -o temp
