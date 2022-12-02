@@ -23,6 +23,6 @@ task amrfinderplus_task{
 		maxRetries: 3
 	}
 	output {
-		File amrfinder_report = ~{base}.amrfinder
+		File amrfinder_report = "~{base}.amrfinder"
 	}
 }
