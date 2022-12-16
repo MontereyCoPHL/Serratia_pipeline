@@ -10,7 +10,7 @@ task unicycler_task{
 		#unicycler params
 		File r1
 		File r2
-		String baseout = sub(basename(r1), "_1P.fq.gz", "")
+		String baseout = sub(basename(r1), "_*$", "")
 		Int threads = 8
 	}
 	command <<<
@@ -18,7 +18,7 @@ task unicycler_task{
 
 		#rename outputs
 		mv temp/assembly.gfa "temp/~{baseout}_assembly.gfa"
-		mv temp/assembly.fasta "temp/~{baseout}_assembly.fasta"
+		mv temp/assembly.fasta "temp/~{baseout}.fasta"
 		mv temp/unicycler.log "temp/~{baseout}_unicycler.log"
 	>>>
 	runtime{
@@ -31,7 +31,7 @@ task unicycler_task{
 	}
 	output{
 		File assembly_gfa = "temp/~{baseout}_assembly.gfa"
-		File assembly_fasta = "temp/~{baseout}_assembly.fasta"
+		File assembly_fasta = "temp/~{baseout}.fasta"
 		File unicycler_log = "temp/~{baseout}_unicycler.log"
 	}
 }

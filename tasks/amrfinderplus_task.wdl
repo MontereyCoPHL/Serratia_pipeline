@@ -9,7 +9,7 @@ task amrfinderplus_task{
 		#amrfinderplus params
 		File assembly
 		Int threads = 8
-		String base = basename(assembly, ".fa")
+		String base = basename(assembly, ".fasta")
 	}
 	command <<<
 		amrfinder -n ~{assembly} --threads ~{threads} --plus > ~{base}.amrfinder

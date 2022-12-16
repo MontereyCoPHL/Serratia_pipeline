@@ -14,6 +14,7 @@ task busco_task{
 	command <<<
 		busco --in ~{query} -l bacteria_odb10 -m "genome" -o ~{base}
 		grep "one_line_summary" ~{base}/short_summary.specific.bacteria_odb10.~{base}.json | sed -E "s/.*:.\"(.*)\",/\1/" > SUMMARY
+		mv ~{base}/prodigal_output/predicted_genes/predicted.faa ~{base}/prodigal_output/predicted_genes/~{base}_predicted.faa
 
 	>>>
 	runtime{
