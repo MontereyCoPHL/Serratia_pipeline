@@ -28,6 +28,6 @@ task busco_task{
 	output{
 		File busco_report = "~{base}/short_summary.specific.bacteria_odb10.~{base}.txt"
 		String one_line_summary = read_string("SUMMARY")
-		File predicted_genes = "~{base}/prodigal_output/predicted_genes/predicted.faa"
+		File predicted_genes = "~{base}/prodigal_output/predicted_genes/~{base}_predicted.faa"
 	}
 }
