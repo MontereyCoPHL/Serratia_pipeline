@@ -18,11 +18,11 @@ task trimmomatic_task {
 		String primers = "/Trimmomatic-0.39/adapters/NexteraPE-PE.fa:2:30:10"
 	}
 	command <<<
-		trimmomatic PE -summary -trimlog -phred33 ~{r1} ~{r2} -baseout ~{samplename} ILLUMINACLIP:~{primers} LEADING:~{leading} TRAILING:~{trailing} SLIDINGWINDOW:~{window_size}:~{quality_trim_score} MINLEN:~{minlen}
+		trimmomatic PE -summary -trimlog -phred33 ~{r1} ~{r2} -baseout "~{samplename}.fastq.gz" ILLUMINACLIP:~{primers} LEADING:~{leading} TRAILING:~{trailing} SLIDINGWINDOW:~{window_size}:~{quality_trim_score} MINLEN:~{minlen}
 	>>>
 	output{
-		File read1_trimmed = "~{samplename}_1P.fastq"
-		File read2_trimmed = "~{samplename}_2P.fastq"
+		File read1_trimmed = "~{samplename}_1P.fastq.gz"
+		File read2_trimmed = "~{samplename}_2P.fastq.gz"
 		File log = stdout()
 	}
 	runtime{
