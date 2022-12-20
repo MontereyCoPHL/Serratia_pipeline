@@ -14,19 +14,19 @@ workflow serratia_assemble{
 		String samplename
 	}
 	call unicycler.unicycler_task{
-		input: r1 = r1, r2 = r2, samplename = ~{samplename}
+		input: r1 = r1, r2 = r2, samplename = samplename
 	}
 	call ragtag.ragtag_task{
-		input: reference = reference, query = unicycler_task.assembly_fasta, samplename = ~{samplename}
+		input: reference = reference, query = unicycler_task.assembly_fasta, samplename = samplename
 	}
 	call quast.quast_task{
-		input: query = ragtag_task.ragtag_assembly, reference = reference, r1 = r1, r2 = r2, samplename = ~{samplename}
+		input: query = ragtag_task.ragtag_assembly, reference = reference, r1 = r1, r2 = r2, samplename = samplename
 	}
 	call busco.busco_task{
-		input: query = ragtag_task.ragtag_assembly, samplename = ~{samplename}
+		input: query = ragtag_task.ragtag_assembly, samplename = samplename
 	}
 	call amrfinder.amrfinderplus_task{
-		input: assembly = ragtag_task.ragtag_assembly, samplename = ~{samplename}
+		input: assembly = ragtag_task.ragtag_assembly, samplename = samplename
 	}
 	output {
 		#unicyler output
