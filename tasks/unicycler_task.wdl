@@ -6,20 +6,20 @@ task unicycler_task{
 		String docker = "staphb/unicycler:latest"
 		Int cpu = 8
 		Int memory = 8
+		String samplename
 
 		#unicycler params
 		File r1
 		File r2
-		String baseout = sub(basename(r1), "_*$", "")
 		Int threads = 8
 	}
 	command <<<
 		unicycler -1 ~{r1} -2 ~{r2} -o temp
 
 		#rename outputs
-		mv temp/assembly.gfa "temp/~{baseout}_assembly.gfa"
-		mv temp/assembly.fasta "temp/~{baseout}.fasta"
-		mv temp/unicycler.log "temp/~{baseout}_unicycler.log"
+		mv temp/assembly.gfa "temp/~{samplename}_assembly.gfa"
+		mv temp/assembly.fasta "temp/~{samplename}.fasta"
+		mv temp/unicycler.log "temp/~{samplename}_unicycler.log"
 	>>>
 	runtime{
 		docker: "~{docker}"
@@ -30,8 +30,8 @@ task unicycler_task{
 		maxRetries: 3
 	}
 	output{
-		File assembly_gfa = "temp/~{baseout}_assembly.gfa"
-		File assembly_fasta = "temp/~{baseout}.fasta"
-		File unicycler_log = "temp/~{baseout}_unicycler.log"
+		File assembly_gfa = "temp/~{samplename}_assembly.gfa"
+		File assembly_fasta = "temp/~{samplename}.fasta"
+		File unicycler_log = "temp/~{samplename}_unicycler.log"
 	}
 }

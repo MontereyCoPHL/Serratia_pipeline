@@ -7,6 +7,7 @@ workflow serratia_preprocess{
 	input{
 		File read1
 		File read2
+		String samplename
 	}
 	call fastqc.fastqc_task as qc1{
 		input: read = read1
@@ -15,7 +16,7 @@ workflow serratia_preprocess{
 		input: read = read2
 	}
 	call trimmo.trimmomatic_task as trim{
-		input: r1=read1, r2=read2
+		input: r1=read1, r2=read2, samplename = ~{samplename}
 	}
 	call fastqc.fastqc_task as qc3{
 		input: read = trim.read1_trimmed

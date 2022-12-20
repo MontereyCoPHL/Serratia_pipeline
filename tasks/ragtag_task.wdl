@@ -6,16 +6,16 @@ task ragtag_task{
 		String docker = "mcphl/ragtag"
 		Int cpu = 4
 		Int memory = 8
+		String samplename
 
 		#ragtag params
 		File reference
 		File query
-		String baseout = basename(query)
 	}
 	command <<<
 		ragtag.py scaffold ~{reference} ~{query}
-		mv ragtag_output/ragtag.scaffold.fasta ragtag_output/~{baseout}.fasta
-		mv ragtag_output/ragtag.scaffold.stats ragtag_output/~{baseout}.stats
+		mv ragtag_output/ragtag.scaffold.fasta ragtag_output/~{samplename}.fasta
+		mv ragtag_output/ragtag.scaffold.stats ragtag_output/~{samplename}.stats
 
 	>>>
 	runtime{
@@ -27,7 +27,7 @@ task ragtag_task{
 		maxRetries: 3
 	}
 	output{
-		File ragtag_assembly = "ragtag_output/~{baseout}.fasta"
-		File ragtag_stats = "ragtag_output/~{baseout}.stats"
+		File ragtag_assembly = "ragtag_output/~{samplename}.fasta"
+		File ragtag_stats = "ragtag_output/~{samplename}.stats"
 	}
 }

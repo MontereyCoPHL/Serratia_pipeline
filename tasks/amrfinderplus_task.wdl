@@ -5,14 +5,14 @@ task amrfinderplus_task{
 		String docker = "staphb/ncbi-amrfinderplus:latest"
 		Int cpu = 4
 		Int memory = 8
+		String samplename
 
 		#amrfinderplus params
 		File assembly
 		Int threads = 8
-		String base = basename(assembly, ".fasta")
 	}
 	command <<<
-		amrfinder -n ~{assembly} --threads ~{threads} --plus > ~{base}.amrfinder
+		amrfinder -n ~{assembly} --threads ~{threads} --plus > ~{samplename}.amrfinder
 	>>>
 	runtime {
 		docker: "~{docker}"
@@ -23,6 +23,6 @@ task amrfinderplus_task{
 		maxRetries: 3
 	}
 	output {
-		File amrfinder_report = "~{base}.amrfinder"
+		File amrfinder_report = "~{samplename}.amrfinder"
 	}
 }
