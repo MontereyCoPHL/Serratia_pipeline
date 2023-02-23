@@ -12,8 +12,8 @@ task mummer_task{
 		File query
 	}
 	command <<<
-		./nucmer -p ~{samplename} ~{reference} ~{query}
-		./mummerplot -l ~{samplename}.delta
+		nucmer -p ~{samplename} ~{reference} ~{query}
+		mummerplot -l ~{samplename}.delta
 	>>>
 	runtime{
 		docker: "~{docker}"
