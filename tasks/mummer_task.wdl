@@ -21,7 +21,7 @@ task mummer_task{
 		memory: "~{memory} GB"
 		disks: "local-disk 100 SSD"
 		preemptible: 0
-		maxRetries: 3
+		#maxRetries: 3
 	}
 	output{
 		File mummer_alignments = "~{samplename}.delta"
