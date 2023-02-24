@@ -14,6 +14,7 @@ task mummer_task{
 	command <<<
 		nucmer -p ~{samplename} ~{reference} ~{query}
 		mummerplot -l ~{samplename}.delta --png -p ~{samplename}_mummer_plot
+		print("Plot completed")
 	>>>
 	runtime{
 		docker: "~{docker}"
