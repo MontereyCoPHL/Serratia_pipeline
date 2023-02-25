@@ -13,7 +13,7 @@ task mummer_task{
 	}
 	command <<<
 		nucmer -p ~{samplename} ~{reference} ~{query}
-		mummerplot -l ~{samplename}.delta --postscript -p ~{samplename}_mummer_plot
+		mummerplot -l ~{samplename}.delta -p ~{samplename}_mummer_plot #--png
 		echo "mummerplot complete"
 	>>>
 	runtime{
@@ -26,6 +26,6 @@ task mummer_task{
 	}
 	output{
 		File mummer_alignments = "~{samplename}.delta"
-		File mummer_plot = "~{samplename}_mummer_plot.png"
+		#File mummer_plot = "~{samplename}_mummer_plot.png"
 	}
 }
