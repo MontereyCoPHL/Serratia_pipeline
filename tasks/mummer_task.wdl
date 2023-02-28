@@ -15,6 +15,8 @@ task mummer_task{
 		nucmer -p ~{samplename} ~{reference} ~{query}
 		mummerplot -l ~{samplename}.delta -p ~{samplename}_mummer_plot #--png
 		echo "mummerplot complete"
+		#now run gnuplot on generated .gp
+		gnuplot ~{samplename}_mummer_plot.gp
 	>>>
 	runtime{
 		docker: "~{docker}"
@@ -26,6 +28,6 @@ task mummer_task{
 	}
 	output{
 		File mummer_alignments = "~{samplename}.delta"
-		#File mummer_plot = "~{samplename}_mummer_plot.png"
+		File mummer_plot = "~{samplename}_mummer_plot.png"
 	}
 }

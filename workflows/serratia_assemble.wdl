@@ -56,7 +56,7 @@ workflow serratia_assemble{
 		File amrfinderplus_report = amrfinderplus_task.amrfinder_report
 		#mummer output
 		File mummer_alignments = mummer_task.mummer_alignments
-		#File mummer_plot = mummer_task.mummer_plot
+		File mummer_plot = mummer_task.mummer_plot
 	}
 
 }
