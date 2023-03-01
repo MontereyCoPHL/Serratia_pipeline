@@ -2,7 +2,7 @@ version 1.0
 
 task mummer_task{
 	input{
-		String docker = "staphb/mummer"
+		String docker = "quay.io/broadinstitute/viral-phylo:2.1.20.2"
 		Int cpu = 4
 		Int memory = 8
 		String samplename
@@ -12,11 +12,14 @@ task mummer_task{
 		File query
 	}
 	command <<<
+		apt-get update
+		apt-get install gnuplot -y
 		nucmer -p ~{samplename} ~{reference} ~{query}
-		mummerplot -l ~{samplename}.delta -p ~{samplename}_mummer_plot #--png
+		mummerplot -l ~{samplename}.delta -p ~{samplename}_mummer_plot --png
 		echo "mummerplot complete"
 		#now run gnuplot on generated .gp
 		gnuplot ~{samplename}_mummer_plot.gp
+		echo "gnuplot complete"
 	>>>
 	runtime{
 		docker: "~{docker}"
