@@ -13,8 +13,8 @@ task mummer_task{
 		File query
 	}
 	command <<<
-		#apt-get update
-		#apt-get install gnuplot -y
+		apt-get update
+		apt-get install gnuplot -y
 		nucmer -p ~{samplename} ~{reference} ~{query}
 		mummerplot -l ~{samplename}.delta -p ~{samplename}_mummer_plot --png
 		echo "mummerplot complete"
