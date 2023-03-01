@@ -2,7 +2,8 @@ version 1.0
 
 task mummer_task{
 	input{
-		String docker = "quay.io/broadinstitute/viral-phylo:2.1.20.2"
+		#String docker = "quay.io/broadinstitute/viral-phylo:2.1.20.2"
+		String docker = "staphb/mummer:latest"
 		Int cpu = 4
 		Int memory = 8
 		String samplename
@@ -12,8 +13,8 @@ task mummer_task{
 		File query
 	}
 	command <<<
-		apt-get update
-		apt-get install gnuplot -y
+		#apt-get update
+		#apt-get install gnuplot -y
 		nucmer -p ~{samplename} ~{reference} ~{query}
 		mummerplot -l ~{samplename}.delta -p ~{samplename}_mummer_plot --png
 		echo "mummerplot complete"
