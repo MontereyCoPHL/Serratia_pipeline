@@ -2,8 +2,8 @@ version 1.0
 
 task mummer_task{
 	input{
-		#String docker = "quay.io/broadinstitute/viral-phylo:2.1.20.2"
-		String docker = "staphb/mummer:latest"
+		String docker = "quay.io/broadinstitute/viral-phylo:2.1.20.2"
+		#String docker = "staphb/mummer:latest"
 		Int cpu = 4
 		Int memory = 8
 		String samplename
