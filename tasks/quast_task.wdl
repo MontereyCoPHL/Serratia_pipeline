@@ -42,7 +42,7 @@ task quast_task{
 		String total_length = read_string("TOTAL_LENGTH")
 		String percent_GC = read_string("GC")
 		String sequencing_coverage = read_string("SEQ_COV")
-		String percent_reference_coverage = read.string("REF_COV)
+		String percent_reference_coverage = read.string("REF_COV")
 		File quast_report_pdf = "temp/~{samplename}_report.pdf"
 		File misassemblies_report = "temp/contigs_reports/~{samplename}_misassemblies_report.tsv"
 		File unaligned_report = "temp/contigs_reports/~{samplename}_unaligned_report.tsv"
