@@ -3,7 +3,7 @@ version 1.0
 
 task coverage_task{
 	input{
-		String docker = ""
+		String docker = "mcphl/fastq-info"
 		Int cpu = 4
 		Int memory = 8
 		File reference
