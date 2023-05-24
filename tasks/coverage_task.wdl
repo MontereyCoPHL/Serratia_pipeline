@@ -13,7 +13,7 @@ task coverage_task{
 
 	}
 	command <<<
-		./fastqinfo-2.0.sh -r $(head -n 2 ~{r1} | tail -n 1 | wc -c) ~{r1} ~{r2} ~{reference} > ~{samplename}_coverage_out.txt
+		fastqinfo-2.0.sh -r $(head -n 2 ~{r1} | tail -n 1 | wc -c) ~{r1} ~{r2} ~{reference} > ~{samplename}_coverage_out.txt
 		tail -n 1 ~{samplename}_coverage_out.txt | sed -E "s/.*[\t]+//" > COVERAGE
 
 	>>>
