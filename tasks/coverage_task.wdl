@@ -17,7 +17,10 @@ task coverage_task{
 		echo "r1 counts: $r1_count"
 		r2_count=$(sed -n "2~4p" ~{r2}|wc -m)
 		echo "r2 counts: $r2_count"
-		genome_length=$(tail -n+2 ~{reference}|wc -m)
+		genome_bases=$(sed -n -E "/^[ATGCN]+$/p" ~{reference})
+		contigs=$(echo "$genome_bases"|wc -l)
+		#account for newline character at end of each contig
+		genome_length=$(echo "$genome_bases-$genome_length"|bc)
 		echo "genome length: $genome_length"
 		total_bases=$(echo "$r1_count+$r2_count"|bc)
 		echo "total bases: $total_bases"
