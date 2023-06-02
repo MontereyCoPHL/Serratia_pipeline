@@ -13,11 +13,11 @@ task coverage_task{
 
 	}
 	command <<<
-		r1_var=$(gunzip ~{r1}|sed -n "2~4p")
+		r1_var=$(gunzip -c ~{r1}|sed -n "2~4p")
 		#remove everything that isn't a base (newlines)
 		r1_count=$("${r1_var//[^ATGCN]}"|wc -m)
 		echo "r1 counts: $r1_count"
-		r2_var=$(gunzip ~{r2}|sed -n "2~4p")
+		r2_var=$(gunzip -c ~{r2}|sed -n "2~4p")
 		r2_count=$("${r2_var//[^ATGCN]}"|wc -m)
 		echo "r2 counts: $r2_count"
 		genome_bases=$(sed -n "2~2p" ~{reference})
