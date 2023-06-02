@@ -14,9 +14,9 @@ task coverage_task{
 	}
 	command <<<
 		r1_count=$(sed -n "2~4p" ~{r1}|wc -m)
-		echo -e "r1 counts: $r1"
+		echo "r1 counts: $r1_count"
 		r2_count=$(sed -n "2~4p" ~{r2}|wc -m)
-		echo "r2 counts: $r2"
+		echo "r2 counts: $r2_count"
 		genome_length=$(tail -n+2 ~{reference}|wc -m)
 		echo "genome length: $genome_length"
 		total_bases=$(echo "$r1_count+$r2_count"|bc)
