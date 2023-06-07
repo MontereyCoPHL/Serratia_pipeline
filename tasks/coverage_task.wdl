@@ -14,14 +14,14 @@ task coverage_task{
 	}
 	command <<<
 		#get total count of all bases in fastq file (every fourth line starting at the second is a read)
-		r1_total_count=$(gunzip -k -c ~{r1}|sed -n "2~4p"|wc -m)
+		r1_total_count=$(gunzip -k -c -f ~{r1}|sed -n "2~4p"|wc -m)
 		#count the total number of reads
-		r1_reads=$(gunzip -k -c ~{r1}|grep -c ">")
+		r1_reads=$(gunzip -k -c -f ~{r1}|grep -c ">")
 		#subtract total number of reads from total base count to account for end of line characters that were also counted
 		r1_count=$(echo "$r1_total_count-$r1_reads"|bc)
 		echo "r1 counts: $r1_count"
-		r2_total_count=$(gunzip -k -c ~{r2}|sed -n "2~4p"|wc -m)
-		r2_reads=$(gunzip -k -c ~{r2}|grep -c ">")
+		r2_total_count=$(gunzip -k -c -f ~{r2}|sed -n "2~4p"|wc -m)
+		r2_reads=$(gunzip -k -c -f ~{r2}|grep -c ">")
 		r2_count=$(echo "$r2_total_count-$r2_reads"|bc)
 		echo "r2 counts: $r2_count"
 		genome_bases=$(sed -n "2~2p" ~{reference}|wc -m)
