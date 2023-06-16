@@ -49,7 +49,7 @@ workflow serratia_assemble{
 		String N50 = quast_task.N50
 		String total_length = quast_task.total_length
 		String percent_GC = quast_task.percent_GC
-		String sequencing_coverage = quast_task.sequencing_coverage
+		String quast_sequencing_coverage = quast_task.sequencing_coverage
 		String percent_reference_coverage = quast_task.percent_reference_coverage
 		File quast_report_pdf = quast_task.quast_report_pdf
 		File misassemblies_report = quast_task.misassemblies_report
