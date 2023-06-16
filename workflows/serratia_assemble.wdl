@@ -6,6 +6,7 @@ import "../tasks/quast_task.wdl" as quast
 import "../tasks/busco_task.wdl" as busco
 import "../tasks/amrfinderplus_task.wdl" as amrfinder
 import "../tasks/mummer_task.wdl" as mummer
+import "../tasks/coverage_task.wdl" as coverage
 
 workflow serratia_assemble{
 	input{
@@ -31,6 +32,9 @@ workflow serratia_assemble{
 	}
 	call mummer.mummer_task{
 		input: samplename = samplename, reference = reference, query = ragtag_task.ragtag_assembly
+	}
+	call coverage.coverage_task{
+		input: samplename = samplename, reference = ragtag_task.ragtag_assembly, r1 = r1, r2 = r2
 	}
 	output {
 		#unicyler output
@@ -59,6 +63,9 @@ workflow serratia_assemble{
 		#mummer output
 		File mummer_alignments = mummer_task.mummer_alignments
 		File mummer_plot = mummer_task.mummer_plot
+		#coverage output
+		File coverage_report = coverage_task.coverage_report
+		String sequencing_coverage = coverage_task.sequencing_coverage
 	}
 
 }
