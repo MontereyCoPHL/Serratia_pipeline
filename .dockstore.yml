@@ -15,7 +15,7 @@ workflows:
    primaryDescriptorPath: /workflows/serratia_assemble.wdl
    testParameterFiles:
     - empty.json
- - name: get_coverage
+ - name: Get_Coverage
    subclass: WDL
    primaryDescriptorPath: /workflows/get_coverage.wdl
    testParameterFiles:
