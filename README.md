@@ -5,5 +5,5 @@ The pipeline consists of two parts. First, Serrata_Preprocess is run to trim raw
 
 
 To run, please import the workflows from Dockstore into your workspace.<br>[Serratia_Preprocess](https://dockstore.org/workflows/github.com/MontereyCoPHL/Serratia_pipeline/Serratia_Preprocess:main?tab=info)<br>[Fastqc_Aggregate](https://dockstore.org/workflows/github.com/MontereyCoPHL/Serratia_pipeline/Fastqc_Aggregate:main?tab=info)<br>[Serratia_Assemble](https://dockstore.org/workflows/github.com/MontereyCoPHL/Serratia_pipeline/Serratia_Assemble:main?tab=info)<br>
-[Get_Coverage](https://dockstore.org/workflows/github.com/MontereyCoPHL/Serratia_pipeline/Get_Coverage:main?tab=info)<br><br>
+[Get_Coverage](https://dockstore.org/workflows/github.com/MontereyCoPHL/Serratia_pipeline/get_coverage:main?tab=info)<br><br>
 Recommended reference file: [GCF_003031645.1_ASM303164v1_genomic.fna](https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_003031645.1)

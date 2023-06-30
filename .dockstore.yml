@@ -20,8 +20,3 @@ workflows:
    primaryDescriptorPath: /workflows/get_coverage.wdl
    testParameterFiles:
     - empty.json
- - name: Get_Coverage
-   subclass: WDL
-   primaryDescriptorPath: /workflows/get_coverage.wdl
-   testParameterFiles:
-    - empty.json
